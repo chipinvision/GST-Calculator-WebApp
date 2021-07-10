@@ -1,0 +1,22 @@
+{
+    "short_name":"GSTCalc",
+    "name":"GSTCalc",
+    "icons":[
+        {
+            "src":"/icons/ic_192",
+            "type":"image/png",
+            "sizes":"192x192"
+        },
+        {
+            "src":"/icons/ic_512",
+            "type":"image/png",
+            "sizes":"512x512"        
+        }
+    ],
+    "start_url":"/?source=pwa",
+    "background_color":"#FFFFFF",
+    "display":"fullscreen",
+    "scope":"/",
+    "theme-color":"#1E88E5",
+    "description":"GST made simple"
+}

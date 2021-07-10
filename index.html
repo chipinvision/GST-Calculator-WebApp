@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="icon" href="icons/ic_16.png" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    .centered-text {
+      text-align: center;
+    }
+
+    a:visited {
+      color: red;
+    }
+
+    .pad {
+      padding-top: 30px;
+    }
+  </style>
+
+  <title>GST CALC</title>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper blue darken-1">
+      <a href="#" class="brand-logo center">
+        <h5>GST CALC</h5>
+      </a>
+    </div>
+  </nav>
+  <div class="pad"></div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="cp" type="text" class="validate">
+      <label class="active" for="cp">Cost Of Product</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="gp" type="text" class="validate">
+      <label class="active" for="gp">GST Percentage</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <button class="btn waves-effect waves-light blue darken-1" type="submit" name="action" onclick="gst()">CALCULATE
+        <i class="material-icons left">calculate</i>
+      </button>
+      <button class="btn waves-effect waves-light red darken-1" type="submit" name="action" onclick="clr()">CLEAR
+        <i class="material-icons left">clear</i>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Output</span>
+          <!--<p>Solution</p>-->
+          <input value="" id="result" type="text" class="validate">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fixed-action-btn">
+    <a href="info.html" class="btn-floating btn-large blue darken-1">
+      <i class="large material-icons">info</i>
+    </a>
+  </div>
+
+
+  <div class="centered-text">
+    <p>Made with &hearts; by <a href="https://znap.link/invisionchip"><b>Suresh Mishra</b></a>.</p>
+  </div>
+  <script>
+    function gst() {
+      var a, b, c;
+      a = Number(document.getElementById("cp").value);
+      b = Number(document.getElementById("gp").value);
+      c = a + (b * a) / 100;
+      document.getElementById("result").value = c;
+    }
+
+    function clr() {
+      document.getElementById("result").value = "";
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.fixed-action-btn');
+      var instances = M.FloatingActionButton.init(elems, options);
+    });
+
+    if('serviceWorker' in navigator){
+      window.addEventListener('load',function(){
+        navigator.serviceWorker
+        .register("./sw.js")
+        .then(res => console.log("ServiceWorker Registered"))
+        .catch(err =>console.log("ServiceWorker Not Registered",err))
+      })
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
